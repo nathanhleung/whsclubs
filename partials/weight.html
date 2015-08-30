@@ -1,0 +1,93 @@
+<h1>
+  <span>GPA Weight Calculator</span>
+</h1>
+<br>
+<div class="row">
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="year1h">Freshman Year, Honors</label>
+        <input id="year1h" type="number" ng-model="year[1].honors" placeholder="Freshman Year, Honors" class="form-control"/>
+      </div>
+      <div class="form-group">
+        <label for="year1a">Freshman Year, AP</label>
+        <input id="year1a" type="number" ng-model="year[1].ap" placeholder="Freshman Year, AP" class="form-control"/>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="year2h">Sophomore Year, Honors</label>
+        <input id="year2h" type="number" ng-model="year[2].honors" placeholder="Sophomore Year, Honors" class="form-control"/>
+      </div>
+      <div class="form-group">
+        <label for="year2a">Sophomore Year, AP</label>
+        <input id="year2a" type="number" ng-model="year[2].ap" placeholder="Sophomore Year, AP" class="form-control"/>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="year3h">Junior Year, Honors</label>
+        <input id="year3h" type="number" ng-model="year[3].honors" placeholder="Junior Year, Honors" class="form-control"/>
+      </div>
+      <div class="form-group">
+        <label for="year3a">Junior Year, AP</label>
+        <input id="year3a" type="number" ng-model="year[3].ap" placeholder="Junior Year, AP" class="form-control"/>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label for="year4h">Senior Year, Honors</label>
+        <input id="year4h" type="number" ng-model="year[4].honors" placeholder="Senior Year, Honors" class="form-control"/>
+      </div>
+      <div class="form-group">
+        <label for="year4a">Senior Year, AP</label>
+        <input id="year4a" type="number" ng-model="year[4].ap" placeholder="Senior Year, AP" class="form-control"/>
+      </div>
+    </div>
+  </div>
+  <br>
+  <p>
+    <span>Weighted GPA with all As: <span class='h2' ng-class='{"text-danger":total(year) < 1, "text-warning":total(year) < 2 && total(year) >= 1, "text-success":total(year) >= 2}'>{{ total(year) + 4 }}</span>
+  </p>
+  <br>
+  <p>
+    <span>Total weight: <span class='h2' ng-class='{"text-danger":total(year) < 1, "text-warning":total(year) < 2 && total(year) >= 1, "text-success":total(year) >= 2}'>{{total(year)}}</span></span>
+  </p>
+  <br>
+  <p>
+    <span>
+      Key:<br>
+      +0.05 for every full-year Honors-level course<br>
+      +0.10 for every full-year AP-level course
+    </span>
+  </p>
+  <br>
+  <div class='col-md-4'>
+    <!--
+    <table class='table'>
+      <thead>
+        <tr>
+          <th>Year</th>
+          <th>Weight</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Freshman</td>
+          <td>{{calc1(1)}}</td>
+        </tr>
+        <tr>
+          <td>Sophomore</td>
+          <td>{{calc1(2)}}</td>
+        </tr>
+        <tr>
+          <td>Junior</td>
+          <td>{{calc1(3)}}</td>
+        </tr>
+        <tr>
+          <td>Senior</td>
+          <td>{{calc1(4)}}</td>
+        </tr>
+      </tbody>
+    </table> -->
+  </div>
+</div>

@@ -1,0 +1,47 @@
+<h1>
+  <span>Final Grade Calculator</span>
+</h1>
+<br>
+<div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="grade1">First Marking Period</label>
+        <input id="grade1" type="number" ng-model="grades[1]" placeholder="First Marking Period" class="form-control"/>
+      </div>
+      <div class="form-group">
+        <label for="grade2">Second Marking Period</label>
+        <input id="grade2" type="number" ng-model="grades[2]" placeholder="Second Marking Period" class="form-control"/>
+      </div>
+      <div class="form-group">
+        <label for="grade3">Third Marking Period</label>
+        <input id="grade3" type="number" ng-model="grades[3]" placeholder="Third Marking Period" class="form-control"/>
+      </div>
+      <div class="form-group">
+        <label for="grade4">Fourth Marking Period</label>
+        <input id="grade4" type="number" ng-model="grades[4]" placeholder="Fourth Marking Period" class="form-control"/>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="grade5">Midterm</label>
+        <input id="grade5" type="number" ng-model="grades[5]" placeholder="Midterm" class="form-control"/>
+      </div>
+      <div class="form-group">
+        <label for="grade6">Final</label>
+        <input id="grade6" type="number" ng-model="grades[6]" placeholder="Final" class="form-control"/>
+      </div>
+      <div class="form-group">
+        <label for="desired">Desired Final Grade</label>
+        <input id="desired" type="number" ng-model="grades[7]" placeholder="Desired Final Grade" class="form-control"/>
+      </div>
+    </div><br/>
+  </div>
+  <br>
+  <p>
+    <span>Current Average: <span class='h2'>{{ average }}%</span></span>
+  </p>
+  <br>
+  <p>
+    <span>To get {{desired || 0}}% on the remaining {{ remaining }}% of the course, you need <span class='h2' ng-class='{"text-success":needed < 85, "text-warning":needed >= 85 && needed < 90, "text-danger":needed >= 90}'>{{ needed || 0}}%</span></span>
+  </p>
+</div>
