@@ -38,7 +38,7 @@
   <nav class="navbar-fixed-top navbar-default">
     <div class="container">
       <div class="navbar-header">
-        <button type="button" data-toggle="collapse" data-target="#navbar-content" class="navbar-toggle collapsed"><i class="icon-bar"></i><i class="icon-bar"></i><i class="icon-bar"></i></button><a href="#/" class="navbar-brand">Grade Calculators</a>
+        <button type="button" data-toggle="collapse" data-target="#navbar-content" class="navbar-toggle collapsed"><i class="icon-bar"></i><i class="icon-bar"></i><i class="icon-bar"></i></button><a href="#/" class="navbar-brand">Final Grade Calculator</a>
       </div>
       <div id="navbar-content" class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
@@ -61,7 +61,7 @@
     app.config(['$routeProvider', function($routeProvider) {
       $routeProvider.when('/', {
         templateUrl: 'home.html',
-        controlller: 'HomeController',
+        controller: 'HomeController',
         active: 'home'
       }).when('/calc', {
         templateUrl: 'calc.html',
@@ -129,7 +129,7 @@
   </script>
   <script type="text/ng-template" id="home.html">
     <h1>Home</h1>
-    <p>Use these helpful calculators to help you in your endeavors.  A 6.0 GPA is only 14 APs away!</p>
+    <a class="btn btn-lg btn-success" href="#/calc">Go to Calculator</a>
   </script>
   <script type="text/ng-template" id="calc.html">
     <h1>Final Grade Calculator</h1>
