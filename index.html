@@ -40,7 +40,7 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li ng-class="{active: $route.current.active===&quot;about&quot;}"><a href="#/about">About</a></li>
-            <li><a id='toggleTheme'>Toggle Themes</a></li>
+            <li><a id='toggleTheme'>Toggle Themes (beta)</a></li>
           </ul>
         </div>
       </div>
@@ -125,14 +125,16 @@
         }
       }]);
     </script>
-    <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js'></script>
     <script>
       var theme = true;
-      $('#toggleTheme').click(function() {
+      function toggleTheme() {
         $("link[href='./styles.css']")[0].disabled = theme;
         theme = !theme;
-      })
+      }
+      $('#toggleTheme').click(toggleTheme);
+      toggleTheme(); // initialize page with old theme as default
     </script>
   </body>
 </html>
