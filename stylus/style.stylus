@@ -1,0 +1,21 @@
+html, body
+  height 100%
+  
+body
+  font-family 'Lato'
+  
+#content
+  display flex
+  flex-direction column
+  min-height 100%
+  margin-bottom 0
+  padding-bottom 15px
+  
+#main
+  flex 1
+
+.red
+  color red !important
+  
+.btn, .panel
+  border-radius 0px
