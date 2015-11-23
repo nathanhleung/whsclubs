@@ -1,28 +1,103 @@
-$(document).ready(() => {
-  let now = moment();
-  const FIRST_DAY = moment([2015,7,31]);
-  const LAST_DAY = moment([2016,5,1]); // last day for clubs
-  
-  let total = LAST_DAY.diff(FIRST_DAY);
-  let elapsed = now.diff(FIRST_DAY);
-  let percent = elapsed / total;
-  
-  let roundedPercent = Math.round((percent * 100) * 4) / 4;
-  $('#percent').html(roundedPercent);
-  
-  // Key Club
-  let parHours = percent * 40;
-  let roundedHours = Math.round(parHours * 4) / 4;
-  let hoursNoun = pluralize('hour', roundedHours);
-  $('#hours').html(roundedHours + " " + hoursNoun);
-  
-  // Science Club
-  let meetings = Math.floor(percent * 4);
-  let meetingsNoun = pluralize('meeting', meetings);
-  $('#meetings').html(meetings + " " + meetingsNoun);
-  
-  // TTimes
-  let articles = Math.floor(percent * 5);
-  let articlesNoun = pluralize('article', articles);
-  $('#articles').html(articles + " " + articlesNoun);
-});
+const FIRST_DAY = moment([2015,7,31]);
+const LAST_DAY = moment([2016,5,1]);
+const TOTAL_TIMESPAN = LAST_DAY.diff(FIRST_DAY);
+
+const CLUBS = [
+  {
+    name: "Key Club",
+    creditsWord: "hours",
+    required: 40,
+    creditSheet: "https://docs.google.com/spreadsheets/d/1Bw7UnViij9Fb9j6SIlPc0pvCSXdchDVZoFCSwhOCTOE/edit"
+  },
+  {
+    name: "Science Club",
+    creditsWord: "meetings",
+    required: 4,
+    creditSheet: "https://docs.google.com/spreadsheets/d/1s9pbozhOKf0vJgYjEkTy4_U872TtxtmEehcS0dkaDtE/edit?usp=sharing"
+  },
+  {
+    name: "Trojan Times",
+    creditsWord: "articles",
+    required: 5,
+    creditSheet: ""
+  },
+  {
+    name: "Student Council",
+    creditsWord: "credits",
+    required: 10,
+    creditSheet: ""
+  },
+  {
+    name: "Interact",
+    creditsWord: "credits",
+    required: 5,
+    creditSheet: ""
+  }
+]
+
+class ClubBox extends React.Component {
+  constructor() {
+    super();
+    let now = moment();
+    let elapsed = now.diff(FIRST_DAY);
+    this.state = {
+      elapsed
+    }
+  }
+  tick() {
+    this.setState({
+      elapsed: this.state.elapsed + 1000
+    });
+  }
+  componentDidMount() {
+    this.interval = setInterval(this.tick.bind(this), 1000);
+  }
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+  render() {
+    let createBox = (club, index) => {
+      return (
+        <div className='col-sm-4' key={index + club.name}>
+          <div className='panel panel-default'>
+            <div className='panel-heading'>
+              <h2 className='panel-title'>{club.name}</h2>
+            </div>
+            <div className='panel-body'>
+              You should have about <code>{Math.round(this.state.elapsed / TOTAL_TIMESPAN * club.required * 10e7) / 10e7}</code> {club.creditsWord}.  You need {club.required} {club.creditsWord} in total.
+              <br/>
+              <br/>
+              <a className={club.creditSheet?"btn btn-info":"btn btn-info disabled"} href={club.creditSheet} target="_blank">
+                View Credit Sheet&nbsp;&nbsp;<i className="fa fa-share"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      );
+    }
+    return (
+      <div className="jumbotron" id="content">
+        <div className="container" id="main">
+          <h1>Club Utilities</h1>
+          <p>We are about {Math.round(this.state.elapsed / TOTAL_TIMESPAN * 10e7) / 10e5}% through the year.</p>
+          <br/>
+          <div className="row">
+            {CLUBS.sort((a,b) => {
+              // Alphabetize clubs
+              return a.name.localeCompare(b.name);
+            }).map(createBox)}
+          </div>
+        </div>
+        <div className="container" id="footer">
+          <div className="row">
+            <div className="col-xs-12 text-right">
+              <p className="help-block small">If you liked this, try <a href='http://finalgradecalculator.co' target="_blank">Final Grade Calculator</a>!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(<ClubBox/>, document.getElementById('app'));

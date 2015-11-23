@@ -1,5 +1,5 @@
-html, body
-  height 100%
+html, body, #app
+  height 100vh
   
 body
   font-family 'Lato'

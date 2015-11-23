@@ -1,6 +1,7 @@
 html,
-body {
-  height: 100%;
+body,
+#app {
+  height: 100vh;
 }
 body {
   font-family: 'Lato';
