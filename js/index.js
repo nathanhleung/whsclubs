@@ -8,32 +8,7 @@ var FIRST_DAY = moment([2015, 7, 31]);
 var LAST_DAY = moment([2016, 5, 1]);
 var TOTAL_TIMESPAN = LAST_DAY.diff(FIRST_DAY);
 
-var CLUBS = [{
-  name: "Key Club",
-  creditsWord: "hours",
-  required: 40,
-  creditSheet: "https://docs.google.com/spreadsheets/d/1Bw7UnViij9Fb9j6SIlPc0pvCSXdchDVZoFCSwhOCTOE/edit"
-}, {
-  name: "Science Club",
-  creditsWord: "meetings",
-  required: 4,
-  creditSheet: "https://docs.google.com/spreadsheets/d/1s9pbozhOKf0vJgYjEkTy4_U872TtxtmEehcS0dkaDtE/edit?usp=sharing"
-}, {
-  name: "Trojan Times",
-  creditsWord: "articles",
-  required: 5,
-  creditSheet: ""
-}, {
-  name: "Student Council",
-  creditsWord: "credits",
-  required: 10,
-  creditSheet: ""
-}, {
-  name: "Interact",
-  creditsWord: "credits",
-  required: 5,
-  creditSheet: ""
-}];
+var URL = window.location.hostname === "s.codepen.io" ? "https://rawgit.com/nathanhleung/club-utils/gh-pages/data.json" : "https://www.nathanhleung.com/club-utils/data.json";
 
 var ClubBox = (function (_React$Component) {
   _inherits(ClubBox, _React$Component);
@@ -45,7 +20,8 @@ var ClubBox = (function (_React$Component) {
     var now = moment();
     var elapsed = now.diff(FIRST_DAY);
     this.state = {
-      elapsed: elapsed
+      elapsed: elapsed,
+      clubs: []
     };
   }
 
@@ -56,6 +32,13 @@ var ClubBox = (function (_React$Component) {
   };
 
   ClubBox.prototype.componentDidMount = function componentDidMount() {
+    var _this = this;
+
+    $.get(URL, (function (data) {
+      _this.setState({
+        clubs: data
+      });
+    }).bind(this));
     this.interval = setInterval(this.tick.bind(this), 1000);
   };
 
@@ -64,7 +47,7 @@ var ClubBox = (function (_React$Component) {
   };
 
   ClubBox.prototype.render = function render() {
-    var _this = this;
+    var _this2 = this;
 
     var createBox = function createBox(club, index) {
       return React.createElement(
@@ -89,7 +72,7 @@ var ClubBox = (function (_React$Component) {
             React.createElement(
               "code",
               null,
-              Math.round(_this.state.elapsed / TOTAL_TIMESPAN * club.required * 10e7) / 10e7
+              Math.round(_this2.state.elapsed / TOTAL_TIMESPAN * club.required * 10e7) / 10e7
             ),
             " ",
             club.creditsWord,
@@ -132,7 +115,7 @@ var ClubBox = (function (_React$Component) {
         React.createElement(
           "div",
           { className: "row" },
-          CLUBS.sort(function (a, b) {
+          this.state.clubs.sort(function (a, b) {
             // Alphabetize clubs
             return a.name.localeCompare(b.name);
           }).map(createBox)
