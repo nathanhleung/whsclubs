@@ -1,0 +1,32 @@
+[
+    {
+        "name": "Key Club",
+        "creditsWord": "hours",
+        "required": 40,
+        "creditSheet": "https://docs.google.com/spreadsheets/d/1Bw7UnViij9Fb9j6SIlPc0pvCSXdchDVZoFCSwhOCTOE/edit"
+    },
+    {
+        "name": "Science Club",
+        "creditsWord": "meetings",
+        "required": 4,
+        "creditSheet": "https://docs.google.com/spreadsheets/d/1s9pbozhOKf0vJgYjEkTy4_U872TtxtmEehcS0dkaDtE/edit?usp=sharing"
+    },
+    {
+        "name": "Trojan Times",
+        "creditsWord": "articles",
+        "required": 5,
+        "creditSheet": ""
+    },
+    {
+        "name": "Student Council",
+        "creditsWord": "credits",
+        "required": 10,
+        "creditSheet": ""
+    },
+    {
+        "name": "Interact",
+        "creditsWord": "credits",
+        "required": 5,
+        "creditSheet": ""
+    }
+]
