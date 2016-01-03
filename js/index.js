@@ -8,7 +8,7 @@ var FIRST_DAY = moment([2015, 7, 31]);
 var LAST_DAY = moment([2016, 5, 1]);
 var TOTAL_TIMESPAN = LAST_DAY.diff(FIRST_DAY);
 
-var URL = window.location.hostname === "s.codepen.io" ? "https://rawgit.com/nathanhleung/club-utils/gh-pages/data.json" : "https://www.nathanhleung.com/club-utils/data.json";
+var URL = window.location.hostname === "s.codepen.io" ? "https://cdn.rawgit.com/nathanhleung/club-utils/772df454bb1965c340a76583f83264bf6ddb5613/data.json" : "data.json";
 
 var ClubBox = (function (_React$Component) {
   _inherits(ClubBox, _React$Component);
