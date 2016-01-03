@@ -2,7 +2,7 @@ const FIRST_DAY = moment([2015,7,31]);
 const LAST_DAY = moment([2016,5,1]);
 const TOTAL_TIMESPAN = LAST_DAY.diff(FIRST_DAY);
 
-const URL = (window.location.hostname === "s.codepen.io" ? "https://rawgit.com/nathanhleung/club-utils/gh-pages/data.json" : "https://www.nathanhleung.com/club-utils/data.json");
+const URL = (window.location.hostname === "s.codepen.io" ? "https://cdn.rawgit.com/nathanhleung/club-utils/772df454bb1965c340a76583f83264bf6ddb5613/data.json" : "data.json");
 
 class ClubBox extends React.Component {
   constructor() {
