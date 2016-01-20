@@ -1,5 +1,5 @@
 # Club Utilities
 
-Tracks pars for club credit.  Made with React.
+Tracks pars for club credit.  Made with [React](https://facebook.github.io/react/).
 
-[Codepen](http://codepen.io/LeungEnterprises/pen/WQWpaV)
+[WHS Club Utilities](https://xyz.nathanhleung.com/club-utils)
