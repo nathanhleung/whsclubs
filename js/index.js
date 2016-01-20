@@ -136,7 +136,7 @@ var ClubBox = (function (_React$Component) {
               "If you liked this, try ",
               React.createElement(
                 "a",
-                { href: "http://finalgradecalculator.co", target: "_blank" },
+                { href: "https://xyz.nathanhleung.com/gradecalculator", target: "_blank" },
                 "Final Grade Calculator"
               ),
               "!"
