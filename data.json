@@ -26,12 +26,12 @@
     {
         "name": "Interact",
         "creditsWord": "credits",
-        "required": 5,
+        "required": 10,
         "creditSheet": ""
     },
     {
         "name": "Math Club",
-        "creditsWord": "credits",
+        "creditsWord": "meetings",
         "required": 14,
         "creditSheet": ""
     },
