@@ -49,7 +49,7 @@
     },
     {
         "name": "Quiz Bowl",
-        "creditsWord": "meetings/tournaments",
+        "creditsWord": "meetings",
         "required": 11,
         "creditSheet": "https://docs.google.com/spreadsheets/d/1elaiWhhFGQIha_xKE-NtTUrGkRrPebjHy8eSLyq8fNs/edit#gid=470489134"
     }
