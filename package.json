@@ -1,7 +1,7 @@
 {
-  "name": "club-utils",
+  "name": "school-utils",
   "version": "1.0.0",
-  "description": "Club credit utilities for students at WHS",
+  "description": "Utilities for students at WHS",
   "main": "app.js",
   "scripts": {
     "postinstall": "gulp",
