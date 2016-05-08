@@ -1,0 +1,51 @@
+h1
+  span GPA Weight Calculator
+br
+.row
+  .col-md-3
+    .form-group
+      label(for='year1h') Freshman Year, Honors
+      input#year1h.form-control(type='number', ng-model='year[1].honors', placeholder='Freshman Year, Honors')
+    .form-group
+      label(for='year1a') Freshman Year, AP
+      input#year1a.form-control(type='number', ng-model='year[1].ap', placeholder='Freshman Year, AP')
+  .col-md-3
+    .form-group
+      label(for='year2h') Sophomore Year, Honors
+      input#year2h.form-control(type='number', ng-model='year[2].honors', placeholder='Sophomore Year, Honors')
+    .form-group
+      label(for='year2a') Sophomore Year, AP
+      input#year2a.form-control(type='number', ng-model='year[2].ap', placeholder='Sophomore Year, AP')
+  .col-md-3
+    .form-group
+      label(for='year3h') Junior Year, Honors
+      input#year3h.form-control(type='number', ng-model='year[3].honors', placeholder='Junior Year, Honors')
+    .form-group
+      label(for='year3a') Junior Year, AP
+      input#year3a.form-control(type='number', ng-model='year[3].ap', placeholder='Junior Year, AP')
+  .col-md-3
+    .form-group
+      label(for='year4h') Senior Year, Honors
+      input#year4h.form-control(type='number', ng-model='year[4].honors', placeholder='Senior Year, Honors')
+    .form-group
+      label(for='year4a') Senior Year, AP
+      input#year4a.form-control(type='number', ng-model='year[4].ap', placeholder='Senior Year, AP')
+br
+p
+  span
+    | Weighted GPA with all As: 
+    span.h2(ng-class='{"text-danger":total(year) < 1, "text-warning":total(year) < 2 && total(year) >= 1, "text-success":total(year) >= 2}') {{ total(year) + 4 }}
+br
+p
+  span
+    | Total weight: 
+    span.h2(ng-class='{"text-danger":total(year) < 1, "text-warning":total(year) < 2 && total(year) >= 1, "text-success":total(year) >= 2}') {{total(year)}}
+br
+p
+  span
+    | Key:
+    br
+    |       +0.05 for every full-year Honors-level course
+    br
+    |       +0.10 for every full-year AP-level course
+br

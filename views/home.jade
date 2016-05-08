@@ -1,0 +1,60 @@
+extends /_layout
+
+block head
+  link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Lato|Lobster')
+  link(rel='stylesheet' href='/css/home.css')
+
+block content
+  .jumbotron
+    .container
+      h1 Credit Sheet Search&nbsp;&nbsp;
+        a.btn.btn-info.btn-lg(href='/dash') Club Dashboard&nbsp;&nbsp;#[i.fa.fa-share]
+        &nbsp;
+        a.btn.btn-warning.btn-lg(href='/gradecalculator') Final Grade Calculator&nbsp;&nbsp;#[i.fa.fa-share]
+      #app
+        p.lead We are about {{ progress_ | percent | millionths }}% through the year
+        .row#info-row
+          .col-md-6
+            .form-group
+              h2 Search by Name
+              .input-group
+                span.input-group-addon #[i.fa.fa-search]
+                input.form-control.input-lg(v-model='name' placeholder='Aubrey Graham')
+          .col-md-6
+            h2 Notes
+            p.help-block.
+              For class commitee, make sure you have enough event credits (4)!
+              <br>
+              Also, make sure you've paid dues for all your clubs
+        .row
+          .col-md-4
+            club-table(v-bind:club-data='key_club' v-bind:name='name')
+          .col-md-4
+            club-table(v-bind:club-data='science_club' v-bind:name='name')
+          .col-md-4
+            club-table(v-bind:club-data='soph_committee' v-bind:name='name')
+        
+    template#club-table
+      h2 {{ clubData.info.name }}<br>
+        span.small {{ clubData.info.required }} {{ clubData.info.creditsWord }} required
+      .panel
+        table.table.table-striped
+          thead
+            tr
+              th #
+              th Name
+              th Credit
+              th Progress
+          tbody
+            tr(v-for='m in clubData.members | orderBy "name" | filterBy name in "name"')
+              td {{ $index + 1 }}
+              td {{ m.name }}
+              //- In case the club does credit in a different way, like class committee
+              td {{ m.specialCredit || m.credit }} {{ clubData.info.creditsWord }}
+              td.
+                {{ m.credit / clubData.info.required | percent | hundredths }}%
+          
+        
+block scripts
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.21/vue.min.js')
+  script(src='/js/home.js')

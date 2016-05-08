@@ -1,0 +1,38 @@
+h1
+  span Final Grade Calculator
+br
+.row
+  .col-md-6
+    .form-group
+      label(for='grade1') First Marking Period
+      input#grade1.form-control(type='number', ng-model='grades[1]', placeholder='First Marking Period')
+    .form-group
+      label(for='grade2') Second Marking Period
+      input#grade2.form-control(type='number', ng-model='grades[2]', placeholder='Second Marking Period')
+    .form-group
+      label(for='grade3') Third Marking Period
+      input#grade3.form-control(type='number', ng-model='grades[3]', placeholder='Third Marking Period')
+    .form-group
+      label(for='grade4') Fourth Marking Period
+      input#grade4.form-control(type='number', ng-model='grades[4]', placeholder='Fourth Marking Period')
+  .col-md-6
+    .form-group
+      label(for='grade5') Midterm
+      input#grade5.form-control(type='number', ng-model='grades[5]', placeholder='Midterm')
+    .form-group
+      label(for='grade6') Final
+      input#grade6.form-control(type='number', ng-model='grades[6]', placeholder='Final')
+    .form-group
+      label(for='desired') Desired Final Grade
+      input#desired.form-control(type='number', ng-model='grades[7]', placeholder='Desired Final Grade')
+  br
+br
+p
+  span
+    | Current Average: 
+    span.h2 {{ average }}%
+br
+p
+  span
+    | To get {{desired || 0}}% on the remaining {{ remaining }}% of the course, you need 
+    span.h2(ng-class='{"text-success":needed < 85, "text-warning":needed >= 85 && needed < 90, "text-danger":needed >= 90}') {{ needed || 0}}%
