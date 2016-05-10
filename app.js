@@ -26,6 +26,7 @@ app.get('/', mainCtrl.home);
 app.get('/key_club', mainCtrl.key_club);
 app.get('/science_club', mainCtrl.science_club);
 app.get('/soph_committee', mainCtrl.soph_committee);
+app.get('/wiss_pals', mainCtrl.wiss_pals);
 
 app.get('/dash', mainCtrl.dash);
 app.get('/gradecalculator', mainCtrl.gradecalc);

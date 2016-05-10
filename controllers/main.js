@@ -108,6 +108,32 @@ exports.soph_committee = (req, res) => {
   });
 };
 
+exports.wiss_pals = (req, res) => {
+  util.getJson(util.urls.wiss_pals).then((result) => {
+    const mapped = result.map((el) => {
+      const credits = el['# of Credits'];
+      return {
+        name: el['field1'],
+        grade: 0, // Grade is not in the credit sheet
+        credit: credits
+      };
+    });
+    res.json({
+      info: {
+        name: 'Wiss Pals',
+        id: 'wiss_pals',
+        required: 5,
+        creditsWord: 'credits',
+        creditSheet: 'https://docs.google.com/spreadsheets/d/1Rvsi5EONbHiJFc_aihlno1Ccl9m2HmARJGC9z3VU06Y/edit#gid=0',
+      },
+      members: mapped,
+    });
+  }).catch((err) => {
+    res.send(err);
+  });
+};
+
+
 exports.dash = (req, res) => {
   res.render('dash', {
     title: 'Club Dashboard',

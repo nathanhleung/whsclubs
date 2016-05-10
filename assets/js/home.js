@@ -25,6 +25,7 @@ const app = new Vue({
     key_club: [],
     science_club: [],
     soph_committee: [],
+    wiss_pals: [],
     progress_: 0,
   },
   methods: {
@@ -41,6 +42,7 @@ const app = new Vue({
   ready() {
     this.updateProgress();
     setInterval(this.updateProgress, 1000);
+    // Get data for every key in the data object
     for (let i = 0; i < Object.keys(this.$data).length; i++) {
       const key = Object.keys(this.$data)[i];
       if (key[key.length - 1] !== '_') {

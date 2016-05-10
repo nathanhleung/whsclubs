@@ -27,11 +27,13 @@ block content
               <br>
               Also, make sure you've paid dues for all your clubs
         .row
-          .col-md-4
+          .col-md-3
             club-table(v-bind:club-data='key_club' v-bind:name='name')
-          .col-md-4
+          .col-md-3
             club-table(v-bind:club-data='science_club' v-bind:name='name')
-          .col-md-4
+          .col-md-3
+            club-table(v-bind:club-data='wiss_pals' v-bind:name='name')
+          .col-md-3
             club-table(v-bind:club-data='soph_committee' v-bind:name='name')
         
     template#club-table
