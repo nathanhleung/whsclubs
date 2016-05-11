@@ -17,6 +17,9 @@ block content
           .col-md-6
             .form-group
               h2 Search by Name
+              p.help-block.
+                Find your name on the FBLA, Science Club, Wiss Pals, Key Club,&nbsp;
+                or Sophomore Committee credit sheets.
               .input-group
                 span.input-group-addon #[i.fa.fa-search]
                 input.form-control.input-lg(v-model='name' placeholder='Aubrey Graham')
@@ -27,18 +30,25 @@ block content
               <br>
               Also, make sure you've paid dues for all your clubs
         .row
-          .col-md-3
-            club-table(v-bind:club-data='key_club' v-bind:name='name')
-          .col-md-3
+          .col-md-4
+            club-table(v-bind:club-data='fbla' v-bind:name='name')
+          .col-md-4
             club-table(v-bind:club-data='science_club' v-bind:name='name')
-          .col-md-3
+          .col-md-4
             club-table(v-bind:club-data='wiss_pals' v-bind:name='name')
-          .col-md-3
+        .row
+          .col-md-4
+            club-table(v-bind:club-data='key_club' v-bind:name='name')
+          .col-md-4
             club-table(v-bind:club-data='soph_committee' v-bind:name='name')
         
     template#club-table
-      h2 {{ clubData.info.name }}<br>
-        span.small {{ clubData.info.required }} {{ clubData.info.creditsWord }} required
+      h2 {{ clubData.info.name }}&nbsp;&nbsp;
+        a.btn.btn-info.btn-xs(v-bind:href='clubData.info.creditSheet' target="_blank").
+          View Credit Sheet #[i.fa.fa-share]
+        br
+        span.small.
+          {{ clubData.info.required }} {{ clubData.info.creditsWord }} required
       .panel
         table.table.table-striped
           thead

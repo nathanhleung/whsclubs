@@ -22,10 +22,11 @@ Vue.filter('millionths', (data) => {
 const app = new Vue({
   el: '#app',
   data: {
-    key_club: [],
+    fbla: [],
     science_club: [],
-    soph_committee: [],
     wiss_pals: [],
+    key_club: [],
+    soph_committee: [],
     progress_: 0,
   },
   methods: {
@@ -46,7 +47,7 @@ const app = new Vue({
     for (let i = 0; i < Object.keys(this.$data).length; i++) {
       const key = Object.keys(this.$data)[i];
       if (key[key.length - 1] !== '_') {
-        $.getJSON(`/${key}`, (data) => {
+        $.getJSON(`/clubs/${key}`, (data) => {
           this[key] = data;
         });
       }

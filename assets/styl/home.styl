@@ -27,12 +27,12 @@ h1, h2, h3, h4
   border-bottom-color #ccc
   box-shadow none
   
+  // Keep everything the same on focus
   &:focus
     box-shadow none
     border-color transparent
-    border-bottom-color #333
-    border-bottom-width 2px
+    border-bottom-color #ccc
     
-.btn
+.btn:not(.btn-xs)
   border-radius 9999px
   padding 12px 25px

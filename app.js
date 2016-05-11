@@ -3,6 +3,7 @@ const path = require('path');
 const logger = require('morgan');
 
 const mainCtrl = require('./controllers/main');
+const clubsCtrl = require('./controllers/clubs');
 
 const app = express();
 
@@ -23,10 +24,11 @@ app.use((req, res, next) => {
 });
 
 app.get('/', mainCtrl.home);
-app.get('/key_club', mainCtrl.key_club);
-app.get('/science_club', mainCtrl.science_club);
-app.get('/soph_committee', mainCtrl.soph_committee);
-app.get('/wiss_pals', mainCtrl.wiss_pals);
+app.get('/clubs/fbla', clubsCtrl.fbla);
+app.get('/clubs/key_club', clubsCtrl.key_club);
+app.get('/clubs/science_club', clubsCtrl.science_club);
+app.get('/clubs/soph_committee', clubsCtrl.soph_committee);
+app.get('/clubs/wiss_pals', clubsCtrl.wiss_pals);
 
 app.get('/dash', mainCtrl.dash);
 app.get('/gradecalculator', mainCtrl.gradecalc);
