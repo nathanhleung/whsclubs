@@ -1,7 +1,7 @@
 {
-  "name": "school-utils",
-  "version": "1.0.0",
-  "description": "Utilities for students at WHS",
+  "name": "whsclubs",
+  "version": "2.0.0",
+  "description": "WHS club credit checker and other utilities",
   "main": "app.js",
   "scripts": {
     "postinstall": "gulp",
