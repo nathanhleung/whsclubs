@@ -27,7 +27,7 @@ angular.module('gradeCalcApp', ['ngRoute'])
         $scope.multiplier = 1;
         $scope.sum = 0;
         for (var i = 1; i <= 6; i++) {
-            if (!newGrades[i]) {
+            if (!newGrades[i] && parseInt(newGrades[i]) !== 0) {
                 if (i > 4) {
                     $scope.multiplier -= 0.1;
                 } else {
