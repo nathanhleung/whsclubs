@@ -15,3 +15,9 @@ exports.gradecalc = (req, res) => {
     title: 'Grade Calculator',
   });
 };
+
+exports.notfound = (req, res) => {
+  res.render('404', {
+    title: '404 - Page Not Found',
+  });
+};
