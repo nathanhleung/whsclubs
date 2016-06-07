@@ -32,6 +32,7 @@ app.get('/clubs/wiss_pals', clubsCtrl.wiss_pals);
 
 app.get('/dash', mainCtrl.dash);
 app.get('/gradecalculator', mainCtrl.gradecalc);
+app.get('*', mainCtrl.notfound);
 
 app.listen(app.get('port'), () => {
   console.log(`App listening on port ${app.get('port')}!`);
