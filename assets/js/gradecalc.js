@@ -21,12 +21,20 @@ angular.module('gradeCalcApp', ['ngRoute'])
   }])
   .controller('AboutController', ['$scope', function($scope) {
   }])
-  .controller('CalcController', ['$scope', function ($scope) {
+  .controller('CalcController', ['$scope', '$location', function ($scope, $location) {
+    // contains mp1, mp2, mp3, mp4, mt, final, desired
     $scope.grades = [];
-    $scope.$watch('grades', function (newGrades, oldGrades) {
+    if (typeof $location.search().grades !== 'undefined') {
+      // grades query param is a list of comma-separated values
+      const urlGrades = $location.search().grades.split(',');
+      for (let i = 0; i < urlGrades.length; i++) {
+        $scope.grades.push(urlGrades[i]);
+      }
+    }
+    $scope.$watch('grades', (newGrades, oldGrades) => {
         $scope.multiplier = 1;
         $scope.sum = 0;
-        for (var i = 1; i <= 6; i++) {
+        for (let i = 1; i <= 6; i++) {
             if (!newGrades[i] && parseInt(newGrades[i]) !== 0) {
                 if (i > 4) {
                     $scope.multiplier -= 0.1;
