@@ -31,8 +31,11 @@ p
   span
     | Current Average: 
     span.h2 {{ average }}%
-br
 p
   span
     | To get {{desired || 0}}% on the remaining {{ remaining }}% of the course, you need 
     span.h2(ng-class='{"text-success":needed < 85, "text-warning":needed >= 85 && needed < 90, "text-danger":needed >= 90}') {{ needed || 0}}%
+.form-group
+    label Share This With Your Friends!
+    input.form-control(type='text', ng-model='shareUrl' readonly)
+    p Share this URL with your friends to show them what a good student you've been over the past year.
