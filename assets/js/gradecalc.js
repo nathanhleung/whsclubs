@@ -55,15 +55,17 @@ angular.module('gradeCalcApp', ['ngRoute'])
     // get grades from url if present
     if (typeof $location.search().grades !== 'undefined' && $location.search().grades !== '') {
       // grades query param is a list of comma-separated values
-      const urlGrades = $location.search().grades.split(',').forEach((grade) => {
+      const urlGrades = $location.search().grades.split(',').map((grade) => {
         if (typeof grade !== 'undefined' && grade !== '') {
           return parseInt(grade, 10);
         } else {
           return undefined;
         }
       });
-      for (let i = 0; i < urlGrades.length; i++) {
-        $scope.grades.push(urlGrades[i]);
+      if (Array.isArray(urlGrades)) {
+        for (let i = 0; i < urlGrades.length; i++) {
+          $scope.grades.push(urlGrades[i]);
+        }
       }
     }
   }])
