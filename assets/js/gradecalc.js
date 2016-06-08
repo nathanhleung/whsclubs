@@ -59,7 +59,10 @@ angular.module('gradeCalcApp', ['ngRoute'])
       // we have to add a comma to the beginning because the first value is removed otherwise for some reason
       const urlGrades = (',' + $location.search().grades).split(',').map((grade) => {
         if (typeof grade !== 'undefined' && grade !== '') {
-          return parseInt(grade, 10);
+          const parsedGrade = parseInt(grade, 10);
+          if (!isNaN(parsedGrade)) {
+            return parsedGrade;
+          }
         } else {
           return undefined;
         }
