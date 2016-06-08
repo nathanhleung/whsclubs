@@ -51,12 +51,14 @@ angular.module('gradeCalcApp', ['ngRoute'])
         } else {
             $scope.needed = Math.round((($scope.desired - ($scope.average * $scope.multiplier)) / (1-$scope.multiplier)) * 100) / 100;
         }
-        $scope.shareUrl = 'https://whsclubs.herokuapp.com/gradecalculator#/?grades=' + $scope.grades.toString();
+        // first character is leading comma, remove for aesthetics
+        $scope.shareUrl = 'https://whsclubs.herokuapp.com/gradecalculator#/?grades=' + $scope.grades.toString().substr(1);
     }, true);
     // get grades from url if present
     if (typeof $location.search().grades !== 'undefined' && $location.search().grades !== '') {
       // grades query param is a list of comma-separated values
       // we have to add a comma to the beginning because the first value is removed otherwise for some reason
+      // $scope.grades.toString adds a comma at the beginning but we remove it above so it looks better
       const urlGrades = (',' + $location.search().grades).split(',').map((grade) => {
         if (typeof grade !== 'undefined' && grade !== '') {
           const parsedGrade = parseInt(grade, 10);
