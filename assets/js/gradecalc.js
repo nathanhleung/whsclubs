@@ -24,13 +24,6 @@ angular.module('gradeCalcApp', ['ngRoute'])
   .controller('CalcController', ['$scope', '$location', function ($scope, $location) {
     // contains mp1, mp2, mp3, mp4, mt, final, desired
     $scope.grades = [];
-    if (typeof $location.search().grades !== 'undefined') {
-      // grades query param is a list of comma-separated values
-      const urlGrades = $location.search().grades.split(',');
-      for (let i = 0; i < urlGrades.length; i++) {
-        $scope.grades.push(urlGrades[i]);
-      }
-    }
     $scope.$watch('grades', (newGrades, oldGrades) => {
         $scope.multiplier = 1;
         $scope.sum = 0;
@@ -59,6 +52,20 @@ angular.module('gradeCalcApp', ['ngRoute'])
             $scope.needed = Math.round((($scope.desired - ($scope.average * $scope.multiplier)) / (1-$scope.multiplier)) * 100) / 100;
         }
     }, true);
+    // get grades from url if present
+    if (typeof $location.search().grades !== 'undefined' && $location.search().grades !== '') {
+      // grades query param is a list of comma-separated values
+      const urlGrades = $location.search().grades.split(',').forEach((grade) => {
+        if (typeof grade !== 'undefined' && grade !== '') {
+          return parseInt(grade, 10);
+        } else {
+          return undefined;
+        }
+      });
+      for (let i = 0; i < urlGrades.length; i++) {
+        $scope.grades.push(urlGrades[i]);
+      }
+    }
   }])
   .controller('WeightController', ['$scope', function($scope) {
     $scope.year = [];
