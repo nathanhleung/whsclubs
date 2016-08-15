@@ -158,7 +158,7 @@ exports.wiss_pals = (req, res) => {
 };
 
 exports.ttimes = (req, res) => {
-  util.getJson(util.urlsttimes).then((result) => {
+  util.getJson(util.urls.ttimes).then((result) => {
     const mapped = result.map((el) => {
       const credits = el['TOTAL'];
       return {
