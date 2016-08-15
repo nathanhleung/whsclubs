@@ -29,6 +29,7 @@ app.get('/clubs/key_club', clubsCtrl.key_club);
 app.get('/clubs/science_club', clubsCtrl.science_club);
 app.get('/clubs/soph_committee', clubsCtrl.soph_committee);
 app.get('/clubs/wiss_pals', clubsCtrl.wiss_pals);
+app.get('/clubs/ttimes', clubsCtrl.ttimes);
 
 app.get('/dash', mainCtrl.dash);
 app.get('/gradecalculator', mainCtrl.gradecalc);
