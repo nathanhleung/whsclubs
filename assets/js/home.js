@@ -27,6 +27,7 @@ const app = new Vue({
     wiss_pals: [],
     key_club: [],
     soph_committee: [],
+    ttimes: [],
     progress_: 0,
   },
   methods: {
