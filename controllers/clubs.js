@@ -156,3 +156,28 @@ exports.wiss_pals = (req, res) => {
     res.send(err);
   });
 };
+
+exports.ttimes = (req, res) => {
+  util.getJson(util.urlsttimes).then((result) => {
+    const mapped = result.map((el) => {
+      const credits = el['TOTAL'];
+      return {
+        name: `${el['First Name']} ${el['Last Name']}`,
+        grade: el['Grade'], // Grade is not in the credit sheet
+        credit: credits
+      };
+    });
+    res.json({
+      info: {
+        name: 'Trojan Times',
+        id: 'ttimes',
+        required: 5,
+        creditsWord: 'credits',
+        creditSheet: 'https://docs.google.com/spreadsheets/d/1opxolZelx8CpSNm8ccEMAKZOC_YGtowcS841R6pHjb8/edit#gid=0',
+      },
+      members: mapped,
+    });
+  }).catch((err) => {
+    res.send(err);
+  });
+};
