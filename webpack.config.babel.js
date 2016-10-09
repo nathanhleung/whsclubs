@@ -4,24 +4,17 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import precss from 'precss';
 import autoprefixer from 'autoprefixer';
 
-const fontLoaders = [
-  { test: /\.(woff|woff2|eot|ttf|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-    loader: 'url' },
-];
-
 const config = {
   entry: [
     // babel-polyfill is loaded via CDN, see https://phabricator.babeljs.io/T7348
-    'whatwg-fetch', // for Safari and IE
-    path.join(__dirname, 'assets', 'entry.js'),
+    path.join(__dirname, 'client', 'src', 'entry.js'),
   ],
   output: {
-    path: path.join(__dirname, 'public'),
+    path: path.join(__dirname, 'client', '_build'),
     filename: 'bundle.js',
   },
   module: {
     loaders: [
-      ...fontLoaders,
       {
         test: /\.js$/,
         loaders: ['babel'],
@@ -40,7 +33,7 @@ const config = {
   plugins: [
     new ExtractTextPlugin('bundle.css'),
     new HtmlPlugin({
-      template: path.join(__dirname, 'assets', 'index.jade'),
+      template: path.join(__dirname, 'client', 'src', 'index.jade'),
     }),
   ],
   postcss() {

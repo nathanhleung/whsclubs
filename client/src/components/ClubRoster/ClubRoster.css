@@ -1,0 +1,26 @@
+.clubRoster {
+  border-collapse: collapse;
+  width: 100%;
+  
+  
+  tr th {
+    background: #fff;
+    border-bottom: 2px solid #ccc;
+  }
+  
+  tr {
+    border-bottom: 1px solid #eee;
+  }
+  
+  tr:nth-child(odd) {
+    background: #f8f8f8;
+  }
+  
+  tr:nth-child(even) {
+    background: #fff;
+  }
+  
+  th, td {
+    padding: 10px;
+  }
+}

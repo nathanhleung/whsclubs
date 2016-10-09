@@ -2,15 +2,14 @@
   "name": "whsclubs",
   "version": "3.0.0",
   "description": "WHS club credit checker and other utilities",
-  "main": "lib/app.js",
+  "main": "server/build/app.js",
   "scripts": {
-    "babel": "babel src --out-dir lib",
+    "babel": "babel server/src --out-dir server/_build",
     "babel:w": "npm run babel -- -w",
-    "gulp": "gulp",
     "webpack": "webpack --progress --colors",
-    "webpack:w": "webpack --progress --colors --watch",
-    "postinstall": "npm run babel && npm run gulp",
-    "start": "node lib/entry"
+    "webpack:w": "npm run webpack -- --watch",
+    "postinstall": "npm run babel && npm run webpack",
+    "start": "node server/_build/entry"
   },
   "author": "nathanhleung",
   "license": "ISC",
@@ -20,23 +19,13 @@
     "babel-core": "^6.17.0",
     "babel-loader": "^6.2.5",
     "babel-polyfill": "^6.16.0",
-    "babel-preset-es2015": "^6.6.0",
     "babel-preset-latest": "^6.16.0",
     "babel-preset-react": "^6.5.0",
-    "bluebird": "^3.3.5",
     "css-loader": "^0.25.0",
     "csvtojson": "^0.5.6",
     "express": "^4.13.4",
     "extract-text-webpack-plugin": "^1.0.1",
     "flux": "^3.0.0",
-    "gulp": "^3.9.1",
-    "gulp-autoprefixer": "^3.1.0",
-    "gulp-babel": "^6.1.2",
-    "gulp-cssnano": "^2.1.2",
-    "gulp-jade": "^1.1.0",
-    "gulp-plumber": "^1.1.0",
-    "gulp-stylus": "^2.3.1",
-    "gulp-uglify": "^1.5.3",
     "html-webpack-plugin": "^2.22.0",
     "jade": "^1.11.0",
     "morgan": "^1.7.0",
@@ -48,7 +37,6 @@
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "request-promise": "^3.0.0",
-    "webpack": "^1.13.2",
-    "whatwg-fetch": "^1.0.0"
+    "webpack": "^1.13.2"
   }
 }
