@@ -16,6 +16,9 @@ Comes with fun fonts!
 
 <img src="https://i.imgur.com/pefKWwa.png">
 
+## Run
+* Run `npm install`
+* Run `npm start`
 
 ## Todo
 Bring this jawn into 2016-2017
