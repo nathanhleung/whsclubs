@@ -20,6 +20,7 @@ class App extends Component {
       query: state.query,
       data: state.data,
       loading: state.loading,
+      error: state.error,
     };
   }
   
@@ -45,6 +46,7 @@ class App extends Component {
         <br />
         <br />
         <ClubsList
+          error={this.state.error}
           query={this.state.query}
           loading={this.state.loading}
           clubs={this.state.data}

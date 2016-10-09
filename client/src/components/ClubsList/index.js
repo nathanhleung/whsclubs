@@ -5,9 +5,16 @@ import styles from './ClubsList.css';
 
 class ClubsList extends Component {
   render() {
+    if (this.props.error) {
+      return (
+        <div className={styles.messageContainer}>
+          <h1>An Error Occurred</h1>
+        </div>
+      );
+    }
     if (this.props.loading) {
       return (
-        <div className={styles.loadingContainer}>
+        <div className={styles.messageContainer}>
           <h1>Loading...</h1>
         </div>
       );
@@ -55,6 +62,7 @@ class ClubsList extends Component {
 }
 
 ClubsList.propTypes = {
+  error: PropTypes.bool.isRequired,
   query: PropTypes.string.isRequired,
   loading: PropTypes.bool.isRequired,
   clubs: PropTypes.array.isRequired,

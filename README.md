@@ -1,5 +1,5 @@
 # WHSClubs v3.0 - Credit Sheet Seach
-Check your club credit status with [React](https://facebook.github.io/react/) and [Flux](https://github.com/facebook/flux/)!
+Check your club credit status with [React](https://facebook.github.io/react/) and [Flux](https://github.com/facebook/flux/)
 
 Comes with fun fonts!
 * Lato

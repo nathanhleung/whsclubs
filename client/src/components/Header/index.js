@@ -15,6 +15,13 @@ class Header extends Component {
     }
     return (
       <div style={inline}>
+        <a 
+          target='_blank'
+          className={styles.codeLink}
+          href="https://github.com/nathanhleung/whsclubs"
+        >
+          Source Code
+        </a>
         <h1 className={styles.header}>Credit Sheet Search 3.0</h1> 
         <TimePercent
           start={start}
