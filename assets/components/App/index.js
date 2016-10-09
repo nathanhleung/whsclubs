@@ -4,7 +4,7 @@ import AppStore from '../../flux/AppStore';
 import { requestData } from '../../flux/AppActions';
 
 import Header from '../Header/';
-import SearchBox from '../SearchBox/';
+import SearchSection from '../SearchSection/';
 import ClubsList from '../ClubsList/';
 
 import styles from './App.css';
@@ -34,8 +34,11 @@ class App extends Component {
   render() {
     return (
       <div className={styles.app}>
-        <Header />
-        <SearchBox query={this.state.query} />
+        <Header center={true}/>
+        <br />
+        <SearchSection center={true} query={this.state.query} />
+        <br />
+        <br />
         <ClubsList
           query={this.state.query}
           loading={this.state.loading}

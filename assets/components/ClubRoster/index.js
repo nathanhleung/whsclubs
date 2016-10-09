@@ -13,7 +13,8 @@ class ClubRoster extends Component {
     function getProgress(member, club) {
       const credit = Number(member.credit);
       if (!isNaN(credit)) {
-        const percent = Math.round(credit / club.required * 100);
+        // get percent out of 100
+        const percent = Math.round(credit / club.required * 100 * 100) / 100;
         return `${percent}%`;
       } else {
         return 'N/A';

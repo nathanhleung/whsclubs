@@ -27,3 +27,4 @@ Bring this jawn into 2016-2017
 - phase out the 2015-2016 stuff
 - make it easier to add new clubs (add once, DRY)
 - fix club data api! it's not working anymore!
+  - dynamic typing back at it again, can't call .trim() on a number

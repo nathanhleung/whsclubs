@@ -1,7 +1,27 @@
+/* Pretty much all global CSS goes in here */
+
 .app {
   /* compensate for padding */
   min-height: calc(100vh - 100px);
-  padding: 50px;
+  padding: 60px;
   color: #333;
-  background-color: #f8f8f8;
+  background-color: #eee;
+  font-family: Lato;
+  
+  h1, h2, h3, h4 {
+    font-family: Lobster;
+    font-weight: normal;
+  }
+  
+  h1 {
+    font-size: 4rem;
+  }
+  
+  h2 {
+    font-size: 2rem;
+  }
+  
+  a, input {
+    font-family: Lato;
+  }
 }

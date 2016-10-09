@@ -19,7 +19,7 @@ const clubs = [
     id: 'science_club',
     name: 'Science Club',
     required: 5,
-    creditsWord: 'credits',
+    creditsWord: 'meetings',
     docid: '1G2uItQZooCBY1SAe39gdmCSDKl_t3CLl4RkmW8HU0qY',
     gid: '1826019628',
     fields: {

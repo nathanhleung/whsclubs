@@ -26,7 +26,6 @@ function getJson(url) {
 
 
 async function getClubData() {
-  // @todo
   // Wait until all URLs are fetched
   const allRosters = await Promise.all(clubs.map((club) => {
     // For each club, create a promise to get its roster data
@@ -35,27 +34,30 @@ async function getClubData() {
   const processedRosters = allRosters.map((roster, index) => {
     // Promise.all preserves order
     const club = clubs[index];
-    const processed = roster.map((row) => {
-      return {
+    const processedRows = roster.map((row) => {
+      const processedRow = {
         name: club.fields.name(row),
         credit: club.fields.credit(row),
       };
-    }).filter((member) => {
-      if (member.name.trim() === '' || member.credit.trim() === '') {
+      return processedRow;
+    });
+    const filteredRows = processedRows.filter((member) => {
+      if (member.name.trim() === '' || member.credit === 0) {
         return false;
       }
       return true;
     });
-    return processed;
+    return filteredRows;
   });
   // After all URLs are fetched, map each resolved data promise
   // to its corresponding club (Promise.all preserves the original order)
-  return clubs.map((club, index) => {
+  const clubsWithRosters = clubs.map((club, index) => {
     // Create a new club object with the new roster data
     return Object.assign({}, club, {
       roster: processedRosters[index],
     });
   });
+  return clubsWithRosters;
 };
 
 export default getClubData;

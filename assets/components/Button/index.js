@@ -11,7 +11,12 @@ class Button extends Component {
       };
     }
     return (
-      <a href={this.props.href} className={styles.button} style={inline}>
+      <a
+        href={this.props.href}
+        className={styles.button}
+        style={inline}
+        target={this.props.target}
+      >
         {this.props.children}
       </a>
     );
@@ -21,6 +26,7 @@ class Button extends Component {
 Button.propTypes = {
   href: PropTypes.string,
   size: PropTypes.number,
+  target: PropTypes.string,
 };
 
 export default Button;

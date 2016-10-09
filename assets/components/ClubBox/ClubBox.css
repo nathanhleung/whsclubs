@@ -1,3 +1,12 @@
 .clubBox {
   float: left;
 }
+
+.clubBoxHeader {
+  margin-bottom: 10px;
+}
+
+.clubBoxSubtitle {
+  color: #666;
+  margin-top: 0;
+}

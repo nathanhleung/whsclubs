@@ -4,7 +4,7 @@ import ClubRoster from '../ClubRoster/';
 import styles from './ClubBox.css';
 
 function getUrl(club) {
-  return `https://docs.google.com/spreadsheets/d/${club.docid}/export?exportFormat=csv&gid=${club.gid}`;
+  return `https://docs.google.com/spreadsheets/d/${club.docid}/edit`;
 }
 
 class ClubBox extends Component {
@@ -12,13 +12,13 @@ class ClubBox extends Component {
     const club = this.props.data;
     return (
       <div className={styles.clubBox} style={{ width: this.props.width + '%' }}>
-        <h2>
-          {club.name}&nbsp;
-          <Button href={getUrl(club)} size={12}>
-            Credit Sheet
+        <h2 className={styles.clubBoxHeader}>
+          {club.name}&nbsp;&nbsp;
+          <Button target='_blank' href={getUrl(club)} size={10}>
+            View Credit Sheet
           </Button>
         </h2>
-        <h3>{club.required} {club.creditsWord} required</h3>
+        <h3 className={styles.clubBoxSubtitle}>{club.required} {club.creditsWord} required</h3>
         <ClubRoster club={club} query={this.props.query} />
       </div>
     );
