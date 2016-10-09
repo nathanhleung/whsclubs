@@ -26,22 +26,34 @@ function getJson(url) {
 
 
 async function getClubData() {
+  // @todo
   // Wait until all URLs are fetched
   const allRosters = await Promise.all(clubs.map((club) => {
     // For each club, create a promise to get its roster data
     return getJson(getUrl(club));
   }));
+  const processedRosters = allRosters.map((roster, index) => {
+    // Promise.all preserves order
+    const club = clubs[index];
+    const processed = roster.map((row) => {
+      return {
+        name: club.fields.name(row),
+        credit: club.fields.credit(row),
+      };
+    }).filter((member) => {
+      if (member.name.trim() === '' || member.credit.trim() === '') {
+        return false;
+      }
+      return true;
+    });
+    return processed;
+  });
   // After all URLs are fetched, map each resolved data promise
   // to its corresponding club (Promise.all preserves the original order)
   return clubs.map((club, index) => {
     // Create a new club object with the new roster data
     return Object.assign({}, club, {
-      roster: allRosters[index].map((row) => {
-        return {
-          name: club.fields.name(row),
-          credit: club.fields.credit(row),
-        };
-      }),
+      roster: processedRosters[index],
     });
   });
 };

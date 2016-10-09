@@ -1,12 +1,13 @@
 import { ReduceStore } from 'flux/utils';
 import AppDispatcher from './AppDispatcher';
-import { CHANGE_QUERY, GET_DATA } from './AppConstants';
+import { CHANGE_QUERY, REQUEST_DATA, RECEIVE_DATA } from './AppConstants';
 
 class AppStore extends ReduceStore {
   getInitialState() {
     return {
       query: '',
       data: [],
+      loading: false,
     };
   }
   
@@ -17,8 +18,14 @@ class AppStore extends ReduceStore {
           query: action.payload.query,
         });
       }
-      case GET_DATA: {
+      case REQUEST_DATA: {
         return Object.assign({}, state, {
+          loading: true,
+        });
+      }
+      case RECEIVE_DATA: {
+        return Object.assign({}, state, {
+          loading: false,
           data: action.payload.data,
         });
       }

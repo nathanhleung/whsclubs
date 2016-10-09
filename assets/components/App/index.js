@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Container } from 'flux/utils';
 import AppStore from '../../flux/AppStore';
-import { getData } from '../../flux/AppActions';
+import { requestData } from '../../flux/AppActions';
 
 import Header from '../Header/';
 import SearchBox from '../SearchBox/';
@@ -19,11 +19,16 @@ class App extends Component {
     return {
       query: state.query,
       data: state.data,
+      loading: state.loading,
     };
   }
   
   componentDidMount() {
-    getData();
+    this.request = requestData();
+  }
+  
+  componentWillUnmount() {
+    this.request.abort();
   }
   
   render() {
@@ -31,7 +36,11 @@ class App extends Component {
       <div className={styles.app}>
         <Header />
         <SearchBox query={this.state.query} />
-        <ClubsList clubs={this.state.data} />
+        <ClubsList
+          query={this.state.query}
+          loading={this.state.loading}
+          clubs={this.state.data}
+          rowSize={3} />
       </div>
     );
   }

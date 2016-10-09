@@ -1,5 +1,5 @@
 import AppDispatcher from './AppDispatcher';
-import { CHANGE_QUERY, GET_DATA } from './AppConstants';
+import { CHANGE_QUERY, REQUEST_DATA, RECEIVE_DATA } from './AppConstants';
 
 export function changeQuery(query) {
   AppDispatcher.dispatch({
@@ -10,13 +10,25 @@ export function changeQuery(query) {
   });
 };
 
-export async function getData() {
-  const res = await fetch('/api/club-data');
-  const json = await res.json();
+export function requestData() {
   AppDispatcher.dispatch({
-    type: GET_DATA,
-    payload: {
-      data: json,
-    },
+    type: REQUEST_DATA,
   });
+  return receiveData();
+}
+
+export function receiveData() {
+  const req = new XMLHttpRequest();
+  req.addEventListener('load', () => {
+    const res = req.responseText;
+    AppDispatcher.dispatch({
+      type: RECEIVE_DATA,
+      payload: {
+        data: JSON.parse(res),
+      },
+    });
+  });
+  req.open('GET', '/api/club-data');
+  req.send();
+  return req;
 };

@@ -19,16 +19,16 @@ class ClubBox extends Component {
           </Button>
         </h2>
         <h3>{club.required} {club.creditsWord} required</h3>
-        <ClubRoster club={club}/>
+        <ClubRoster club={club} query={this.props.query} />
       </div>
     );
   }
 }
 
 ClubBox.propTypes = {
-  data: PropTypes.object,
+  query: PropTypes.string.isRequired,
+  data: PropTypes.object.isRequired,
   width: PropTypes.number.isRequired,
-  clearfix: PropTypes.bool.isRequired,
 };
 
 export default ClubBox;

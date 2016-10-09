@@ -3,24 +3,32 @@ import React, { Component, PropTypes } from 'react';
 class ClubRoster extends Component {
   render() {
     const club = this.props.club;
+    const filteredRoster = club.roster.filter((member) => {
+      const regexQuery = new RegExp(this.props.query, 'i')
+      if (regexQuery.test(member.name)) {
+        return true;
+      }
+      return false;
+    });
     function getProgress(member, club) {
       const credit = Number(member.credit);
       if (!isNaN(credit)) {
-        return Math.round(credit / club.required * 100);
+        const percent = Math.round(credit / club.required * 100);
+        return `${percent}%`;
       } else {
         return 'N/A';
       }
     }
     function createRows() {
-      return club.roster.map((member, index) => {
+      return filteredRoster.map((member, index) => {
         return (
           // This'll give an error but it usually is the fault of
-          // the spreadsheet owner
+          // the spreadsheet owner for having duplicate name entries
           <tr key={member.name}>
             <td>{index + 1}</td>
             <td>{member.name}</td>
             <td>{member.credit}</td>
-            <td>{getProgress(member, club)}%</td>
+            <td>{getProgress(member, club)}</td>
           </tr>
         );
       });
@@ -44,6 +52,7 @@ class ClubRoster extends Component {
 }
 
 ClubRoster.propTypes = {
+  query: PropTypes.string.isRequired,
   club: PropTypes.object.isRequired,
 };
 
