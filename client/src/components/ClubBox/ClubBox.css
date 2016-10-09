@@ -1,0 +1,18 @@
+.clubBox {
+  float: left;
+}
+
+.clubBoxHeader {
+  margin-bottom: 10px;
+}
+
+.clubBoxSubtitle {
+  color: #666;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.clubBoxNotes {
+  color: #888;
+  margin-top: 0;
+}
