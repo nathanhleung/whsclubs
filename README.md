@@ -74,9 +74,12 @@ And that's how WHSClubs went from being a Vue.js app to a React/Flux app.
 You probably can check the v2.0.0 tag to verify, but most likely the majority of the
 refactoring
 that made it possible for all the club data to be in one file
-(`server/util/clubs.js`) happened on the server side. Previously each club
+(`server/util/clubs.js`) happened on the server side. Previously, each club
 had its own API endpoint and all the club names had to be stored on both the client
-and server side, but in v3, with only one endpoint for all the data, the client
+and server side, which complicated the addition of new clubs to the site: there were 3 or 4 places
+where the club name had to be added for everything to work correctly.
+In v3, with only one endpoint for all the data, the addition of clubs became much easier and as a nice benefit
+the client
 side could be vastly simplified.
 
 Not to diminish the contribution of React, though — it's still a great library
