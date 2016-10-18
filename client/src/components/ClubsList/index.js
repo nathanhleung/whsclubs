@@ -16,6 +16,7 @@ class ClubsList extends Component {
       return (
         <div className={styles.messageContainer}>
           <h1>Loading...</h1>
+          <p>The initial load can take up to 10 seconds, so please be patient!</p>
         </div>
       );
     }
