@@ -2,8 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import TimePercent from '../TimePercent/';
 import styles from './Header.css';
 
-const start = (new Date(2016, 8, 27)).getTime();
-const end = (new Date(2017, 6, 15)).getTime();
+const start = (new Date(2016, 7, 27)).getTime();
+const end = (new Date(2017, 5, 15)).getTime();
 
 class Header extends Component {
   render() {
