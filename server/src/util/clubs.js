@@ -26,6 +26,7 @@ const clubs = [
     name: 'Science Club',
     required: 5,
     creditsWord: 'meetings',
+    linesToOmit: 1,
     notes: `
       Meetings are once a month in C21. Join the Facebook group
       here for more information: facebook.com/groups/527930740676960/.
