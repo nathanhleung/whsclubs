@@ -8,13 +8,26 @@ function getUrl(club) {
   return `https://docs.google.com/spreadsheets/d/${club.docid}/export?exportFormat=csv&gid=${club.gid}`;
 }
 
-function getJson(url) {
+// Helper function in case we need to
+// throw out the first few lines (i.e. Science Club)
+function omitLines(text, linesToOmit) {
+  let cutoff = 0;
+  // Continue searching for newlines after we find one
+  for (let i = 0; i < linesToOmit; i++) {
+    cutoff = text.indexOf('\n', cutoff + 1);
+  }
+  return text.substr(cutoff + 1);
+}
+
+function getJson(url, linesToOmit) {
   return request(url).then((body) => {
     // Create a new Promise for CsvConverter since it doesn't support Promises
     return new Promise((resolve, reject) => {
       // We need to create a new instance for every request
       // See https://github.com/Keyang/node-csvtojson/issues/24
-      (new CsvConverter()).fromString(body, (err, result) => {
+      // For Science Club, the first line of the CSV is not the header
+      // so it will have a linesToOmit property of 1.
+      (new CsvConverter()).fromString(omitLines(body, linesToOmit), (err, result) => {
         if (err) {
           reject(err);
         }
@@ -29,7 +42,7 @@ async function getClubData() {
   // Wait until all URLs are fetched
   const allRosters = await Promise.all(clubs.map((club) => {
     // For each club, create a promise to get its roster data
-    return getJson(getUrl(club));
+    return getJson(getUrl(club), club.linesToOmit);
   }));
   const processedRosters = allRosters.map((roster, index) => {
     // Promise.all preserves order
