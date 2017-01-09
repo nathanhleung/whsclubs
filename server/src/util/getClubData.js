@@ -11,6 +11,9 @@ function getUrl(club) {
 // Helper function in case we need to
 // throw out the first few lines (i.e. Science Club)
 function omitLines(text, linesToOmit) {
+  if (typeof linesToOmit === 'undefined') {
+    linesToOmit = 0;
+  }
   let cutoff = 0;
   // Continue searching for newlines after we find one
   for (let i = 0; i < linesToOmit; i++) {
