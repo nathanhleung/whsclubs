@@ -28,7 +28,7 @@ const clubs = [
     creditsWord: 'meetings',
     notes: `
       Meetings are once a month in C21. Join the Facebook group
-      here for more information: facebook.com/groups/527930740676960/
+      here for more information: facebook.com/groups/527930740676960/.
     `,
     docid: '1G2uItQZooCBY1SAe39gdmCSDKl_t3CLl4RkmW8HU0qY',
     gid: '1826019628',
@@ -48,7 +48,7 @@ const clubs = [
     creditsWord: 'articles',
     notes: `
       For club credit, you must write 5 articles and attend 4 meetings.
-      Visit L06 for more information
+      Visit L06 for more information.
     `,
     docid: '1opxolZelx8CpSNm8ccEMAKZOC_YGtowcS841R6pHjb8',
     gid: '0',
@@ -68,7 +68,7 @@ const clubs = [
     name: 'Key Club',
     required: 40,
     creditsWord: 'hours',
-    notes: 'For more information about Key Club, talk to Mr. Slanina or Mrs. Bianchi',
+    notes: 'For more information about Key Club, talk to Mr. Slanina or Mrs. Bianchi.',
     docid: '19049AsWzJQ3LKMFzvrb_RFpKhtHqC6sjoGrbPdsJb_Y',
     gid: '0',
     fields: {
